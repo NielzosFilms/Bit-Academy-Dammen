@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static final int BOARD_WIDTH = 12, BOARD_HEIGHT = 12;
+    private static final int BOARD_WIDTH = 8, BOARD_HEIGHT = 8;
 
     private static Board board;
 

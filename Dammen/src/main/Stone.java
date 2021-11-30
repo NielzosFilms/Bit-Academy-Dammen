@@ -3,7 +3,7 @@ package main;
 import enums.COLORS;
 
 public class Stone {
-    private static String whiteIcon = "⚪", blackIcon = "⚫";
+    private static String icon = "o";
 
     private COLORS color;
 
@@ -13,6 +13,6 @@ public class Stone {
 
     @Override
     public String toString() {
-        return this.color == COLORS.WHITE ? whiteIcon : blackIcon;
+        return this.color.toString() + icon;
     }
 }
