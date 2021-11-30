@@ -5,10 +5,10 @@ Java version needed: `Java 1.8`
 
 You can simply download the exported jar file [here](https://github.com/NielzosFilms/Bit-Academy-Dammen/releases/tag/Dammen) and run it with
 ```
-java -jar Bit-Academy-Dammen
+java -jar /path/to/Bit-Academy-Dammen.jar
 ```
 
 If your terminal does not support the `ANSI` colors then use:
 ```
-java -jar Bit-Academy-Dammen no-colors
+java -jar /path/to/Bit-Academy-Dammen.jar no-colors
 ```
