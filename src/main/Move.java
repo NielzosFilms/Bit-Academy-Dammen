@@ -18,6 +18,11 @@ public class Move {
         this.toPos = getPosition(this.toChar, this.toRow);
     }
 
+    public Move(Point from, Point to) {
+        this.fromPos = from;
+        this.toPos = to;
+    }
+
     private Point getPosition(Character character, int row) {
         int y = Math.abs(row - Main.BOARD_HEIGHT) - 1;
         int x = -1;

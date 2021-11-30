@@ -19,10 +19,10 @@ public class RuleChecker {
         this.rules.add(new IsMoveToEmpty());
     }
 
-    public boolean isValidMove(Board board, Move move) {
+    public boolean isValidMove(Board board, Move move, boolean silent) {
         for(RuleCheckerInterface rule : this.rules) {
             if(!rule.check(board, move)) {
-                System.out.println("❌ RuleChecker Failed on rule: " + rule.getClass().toString());
+                if(!silent) System.out.println("❌ RuleChecker Failed on rule: " + rule.getClass().toString());
                 return false;
             }
         }

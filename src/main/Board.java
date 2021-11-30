@@ -91,10 +91,10 @@ public class Board {
         return this.currentPlayerIsPlayer1() ? "White" : "Black";
     }
 
-    public LinkedList<Stone> getStonesFromCurrentPlayer() {
+    public LinkedList<Stone> getStonesFromPlayer(int player) {
         LinkedList<Stone> playerStones = new LinkedList<>();
         for (Stone stone : this.cells.values()) {
-            COLORS playerColor = this.currentPlayerIsPlayer1() ? COLORS.WHITE : COLORS.BLACK;
+            COLORS playerColor = player == 1 ? COLORS.WHITE : COLORS.BLACK;
             if (stone != null && stone.getColor() == playerColor) playerStones.add(stone);
         }
         return playerStones;
@@ -145,5 +145,18 @@ public class Board {
             this.cells.put(move.getFrom(), null);
             this.cells.put(move.getTo(), stone);
         }
+    }
+
+    public boolean canPlayerMove(int player, RuleChecker ruleChecker) {
+        LinkedList<Stone> playerStones = this.getStonesFromPlayer(player);
+        Point[] moveOffsets = player == 1 ? Main.PLAYER1_MOVE_OFFSETS : Main.PLAYER2_MOVE_OFFSETS;
+        for(Stone stone : playerStones) {
+            Point fromCell = this.getStonePosition(stone);
+            for(Point offset : moveOffsets) {
+                Point moveToCell = new Point(fromCell.x + offset.x, fromCell.y + offset.y);
+                if(ruleChecker.isValidMove(this, new Move(fromCell, moveToCell), true)) return true;
+            }
+        }
+        return false;
     }
 }

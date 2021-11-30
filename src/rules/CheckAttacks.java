@@ -2,6 +2,7 @@ package rules;
 
 import enums.COLORS;
 import main.Board;
+import main.Main;
 import main.Move;
 import main.Stone;
 
@@ -9,15 +10,6 @@ import java.awt.*;
 import java.util.LinkedList;
 
 public class CheckAttacks implements RuleCheckerInterface {
-    private static final Point[] PLAYER1_OFFSETS = {
-            new Point(1, -1),
-            new Point(-1, -1),
-    };
-
-    private static final Point[] PLAYER2_OFFSETS = {
-            new Point(1, 1),
-            new Point(-1, 1),
-    };
     private COLORS currentPlayerColor;
 
     @Override
@@ -45,10 +37,10 @@ public class CheckAttacks implements RuleCheckerInterface {
     }
 
     private boolean canPlayerAttack(Board board) {
-        LinkedList<Stone> playerStones = board.getStonesFromCurrentPlayer();
+        LinkedList<Stone> playerStones = board.getStonesFromPlayer(board.getCurrentPlayer());
         for (Stone stone : playerStones) {
             Point cell = board.getStonePosition(stone);
-            Point[] playerOffsets = board.currentPlayerIsPlayer1() ? PLAYER1_OFFSETS : PLAYER2_OFFSETS;
+            Point[] playerOffsets = board.currentPlayerIsPlayer1() ? Main.PLAYER1_MOVE_OFFSETS : Main.PLAYER2_MOVE_OFFSETS;
             for (Point offset : playerOffsets) {
                 Point offset1 = new Point(cell.x + offset.x, cell.y + offset.y);
                 Point offset2 = new Point(cell.x + offset.x * 2, cell.y + offset.y * 2);
