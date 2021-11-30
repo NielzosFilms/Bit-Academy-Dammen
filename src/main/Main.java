@@ -1,9 +1,6 @@
 package main;
 
-import enums.COLORS;
-
 import java.awt.*;
-import java.util.Scanner;
 
 public class Main {
     public static final Character[] COLUMN_CHARS = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
@@ -36,7 +33,6 @@ public class Main {
         board.printBoard();
         while(running) {
             Move move = playerInterface.askAndGetMove();
-            System.out.println(move);
             boolean validMove = ruleChecker.isValidMove(board, move, false);
             if(validMove) {
                 System.out.println("✔ Is valid move");

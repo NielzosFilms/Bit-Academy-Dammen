@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class Board {
-    private int width, height;
+    private final int width, height;
 
     HashMap<Point, Stone> cells;
 

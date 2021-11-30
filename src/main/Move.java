@@ -1,7 +1,6 @@
 package main;
 
 import java.awt.*;
-import java.util.Arrays;
 
 public class Move {
     private Character fromChar, toChar;
