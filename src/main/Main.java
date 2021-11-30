@@ -50,9 +50,6 @@ public class Main {
         boolean canPlayer1Move = board.canPlayerMove(1, ruleChecker);
         boolean canPlayer2Move = board.canPlayerMove(2, ruleChecker);
 
-        System.out.println("canPlayer1Move " + canPlayer1Move);
-        System.out.println("canPlayer2Move " + canPlayer2Move);
-
         if(!canPlayer1Move || !canPlayer2Move) {
             if(!canPlayer1Move && !canPlayer2Move) {
                 System.out.println("Its a draw!");
