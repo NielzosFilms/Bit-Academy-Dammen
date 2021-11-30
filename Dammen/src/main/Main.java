@@ -5,8 +5,8 @@ import enums.COLORS;
 import java.util.Scanner;
 
 public class Main {
-    public static final Character[] COLUMN_CHARS = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
-    public static final int BOARD_WIDTH = 8, BOARD_HEIGHT = 8;
+    public static final Character[] COLUMN_CHARS = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
+    public static final int BOARD_WIDTH = 10, BOARD_HEIGHT = 10;
 
     private static Board board;
     private static PlayerInterface playerInterface;

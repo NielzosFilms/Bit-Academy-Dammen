@@ -26,13 +26,11 @@ public class Board {
 
                 COLORS bgColor = getBackgroundColor(cell);
 
-                if(y < 3) {
-                    if(bgColor == COLORS.DARK_GRAY_BG) {
-                        stone = new Stone(COLORS.WHITE);
-                    }
-                } else if(y > 4) {
-                    if(bgColor == COLORS.GRAY_BG) {
+                if(bgColor == COLORS.DARK_GRAY_BG) {
+                    if(y < 4) {
                         stone = new Stone(COLORS.BLACK);
+                    } else if(y > 5) {
+                        stone = new Stone(COLORS.WHITE);
                     }
                 }
 
@@ -44,7 +42,8 @@ public class Board {
     public void printBoard() {
         for (int y = 0; y < this.height; y++) {
             StringBuilder row = new StringBuilder();
-            row.append(COLORS.CYAN_BG.toString() + COLORS.BLACK + " " + (this.height - y) + " " + COLORS.RESET);
+            int rowNumber = this.height - y;
+            row.append(COLORS.CYAN_BG.toString() + COLORS.BLACK + " " + rowNumber + (rowNumber < 10 ? "  " : " ") + COLORS.RESET);
             for (int x = 0; x < this.width; x++) {
                 Point cell = new Point(x, y);
                 Stone stone = this.cells.get(new Point(x, y));
@@ -57,7 +56,7 @@ public class Board {
         }
 
         StringBuilder lastRow = new StringBuilder();
-        lastRow.append(COLORS.MAGENTA_BG + "   " + COLORS.CYAN_BG + COLORS.BLACK);
+        lastRow.append(COLORS.MAGENTA_BG + "    " + COLORS.CYAN_BG + COLORS.BLACK);
         for(Character character : Main.COLUMN_CHARS) {
             lastRow.append(" " + character + " ");
         }

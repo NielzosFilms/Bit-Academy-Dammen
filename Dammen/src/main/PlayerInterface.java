@@ -19,7 +19,7 @@ public class PlayerInterface {
         String input = "";
 
         while (!input.matches(INPUT_PATTERN)) {
-            System.out.println("⭐ Player " + getCurrentPlayer() + " define your move: (eg. \"a1-b2\")");
+            System.out.println("⭐ Player " + getCurrentPlayer() + " (" + getPlayerColor() + ") define your move: (eg. \"a1-b2\")");
             input = sc.next().toLowerCase();
             if (!input.matches(INPUT_PATTERN)) System.out.println("❌ This is not a valid input.");
         }
@@ -50,5 +50,9 @@ public class PlayerInterface {
 
     public boolean currentPlayerIsPlayer1() {
         return currentPlayerIsPlayer1;
+    }
+
+    public String getPlayerColor() {
+        return currentPlayerIsPlayer1 ? "White" : "Black";
     }
 }
