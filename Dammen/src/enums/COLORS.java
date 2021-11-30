@@ -7,6 +7,7 @@ public enum COLORS {
     GRAY("\u001B[37m"),
     DARK_GRAY("\u001B[90m"),
     CYAN_BG("\u001B[46m"),
+    MAGENTA_BG("\u001B[105m"),
     WHITE_BG("\u001B[107m"),
     BLACK_BG("\u001B[40m"),
     GRAY_BG("\u001B[47m"),

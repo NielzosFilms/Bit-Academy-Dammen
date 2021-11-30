@@ -6,8 +6,6 @@ import java.awt.*;
 import java.util.HashMap;
 
 public class Board {
-    private static final Character[] COLUMN_CHARS = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
-
     private int width, height;
 
     HashMap<Point, Stone> cells;
@@ -17,7 +15,10 @@ public class Board {
         this.height = height;
 
         this.cells = new HashMap<>();
+        initBoard();
+    }
 
+    private void initBoard() {
         for (int y = 0; y < this.height; y++) {
             for (int x = 0; x < this.width; x++) {
                 Point cell = new Point(x, y);
@@ -43,7 +44,7 @@ public class Board {
     public void printBoard() {
         for (int y = 0; y < this.height; y++) {
             StringBuilder row = new StringBuilder();
-            row.append(COLORS.CYAN_BG.toString() + COLORS.BLACK + " " + (y + 1) + " " + COLORS.RESET);
+            row.append(COLORS.CYAN_BG.toString() + COLORS.BLACK + " " + (this.height - y) + " " + COLORS.RESET);
             for (int x = 0; x < this.width; x++) {
                 Point cell = new Point(x, y);
                 Stone stone = this.cells.get(new Point(x, y));
@@ -56,8 +57,8 @@ public class Board {
         }
 
         StringBuilder lastRow = new StringBuilder();
-        lastRow.append("   " + COLORS.CYAN_BG + COLORS.BLACK);
-        for(Character character : COLUMN_CHARS) {
+        lastRow.append(COLORS.MAGENTA_BG + "   " + COLORS.CYAN_BG + COLORS.BLACK);
+        for(Character character : Main.COLUMN_CHARS) {
             lastRow.append(" " + character + " ");
         }
         lastRow.append(COLORS.RESET);
