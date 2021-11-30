@@ -15,6 +15,8 @@ public class Main {
             new Point(-1, 1),
     };
 
+    public static boolean NO_COLORS = false;
+
     private static Board board;
     private static PlayerInterface playerInterface;
     private static RuleChecker ruleChecker;
@@ -28,6 +30,9 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        for(String arg : args) {
+            if(arg.equals("no-colors")) NO_COLORS = true;
+        }
         init();
 
         board.printBoard();

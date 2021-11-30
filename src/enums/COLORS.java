@@ -1,5 +1,7 @@
 package enums;
 
+import main.Main;
+
 public enum COLORS {
     RESET("\u001B[0m"),
     BLACK("\u001B[30m"),
@@ -15,5 +17,8 @@ public enum COLORS {
     COLORS(String ansiCode) {this.ansiCode = ansiCode;}
 
     @Override
-    public String toString() { return this.ansiCode; }
+    public String toString() {
+        if(Main.NO_COLORS) return "";
+        return this.ansiCode;
+    }
 }
