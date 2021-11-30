@@ -1,7 +1,7 @@
 # Bit-Academy-Dammen
 
 ## Getting it running
-Java version needed: `Java 1.8`
+Java version needed: `Java 8`
 
 You can simply download the exported jar file [here](https://github.com/NielzosFilms/Bit-Academy-Dammen/releases/tag/Dammen) and run it with
 ```
