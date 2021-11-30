@@ -22,7 +22,7 @@ public class RuleChecker {
     public boolean isValidMove(Board board, Move move) {
         for(RuleCheckerInterface rule : this.rules) {
             if(!rule.check(board, move)) {
-                System.out.println("Failed on rule: " + rule.toString());
+                System.out.println("❌ RuleChecker Failed on rule: " + rule.getClass().toString());
                 return false;
             }
         }

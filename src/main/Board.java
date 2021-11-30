@@ -29,10 +29,10 @@ public class Board {
 
                 COLORS bgColor = getBackgroundColor(cell);
 
-                if(bgColor == COLORS.DARK_GRAY_BG) {
-                    if(y < 4) {
+                if (bgColor == COLORS.DARK_GRAY_BG) {
+                    if (y < 4) {
                         stone = new Stone(COLORS.BLACK);
-                    } else if(y > 5) {
+                    } else if (y > 5) {
                         stone = new Stone(COLORS.WHITE);
                     }
                 }
@@ -60,7 +60,7 @@ public class Board {
 
         StringBuilder lastRow = new StringBuilder();
         lastRow.append(COLORS.MAGENTA_BG + "   " + COLORS.CYAN_BG + COLORS.BLACK);
-        for(Character character : Main.COLUMN_CHARS) {
+        for (Character character : Main.COLUMN_CHARS) {
             lastRow.append(" " + character + " ");
         }
         lastRow.append(COLORS.RESET);
@@ -93,9 +93,9 @@ public class Board {
 
     public LinkedList<Stone> getStonesFromCurrentPlayer() {
         LinkedList<Stone> playerStones = new LinkedList<>();
-        for(Stone stone : this.cells.values()) {
+        for (Stone stone : this.cells.values()) {
             COLORS playerColor = this.currentPlayerIsPlayer1() ? COLORS.WHITE : COLORS.BLACK;
-            if(stone.getColor() == playerColor) playerStones.add(stone);
+            if (stone != null && stone.getColor() == playerColor) playerStones.add(stone);
         }
         return playerStones;
     }
@@ -117,8 +117,8 @@ public class Board {
     }
 
     public Point getStonePosition(Stone stone) {
-        for(Point cell : this.cells.keySet()) {
-            if(this.cells.get(cell) == stone) {
+        for (Point cell : this.cells.keySet()) {
+            if (this.cells.get(cell) == stone) {
                 return cell;
             }
         }
@@ -127,5 +127,23 @@ public class Board {
 
     public COLORS getCurrentPlayerColor() {
         return this.currentPlayerIsPlayer1() ? COLORS.WHITE : COLORS.BLACK;
+    }
+
+    public void executeMove(Move move) {
+        if (this.containsStone(move.getTo())) {
+            int xDiff = move.getTo().x - move.getFrom().x;
+            int yDiff = move.getTo().y - move.getFrom().y;
+
+            Point offsetCell = new Point(move.getTo().x + xDiff, move.getTo().y + yDiff);
+
+            Stone stone = this.getStone(move.getFrom());
+            this.cells.put(move.getFrom(), null);
+            this.cells.put(move.getTo(), null);
+            this.cells.put(offsetCell, stone);
+        } else {
+            Stone stone = this.getStone(move.getFrom());
+            this.cells.put(move.getFrom(), null);
+            this.cells.put(move.getTo(), stone);
+        }
     }
 }

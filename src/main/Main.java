@@ -22,8 +22,18 @@ public class Main {
         init();
 
         board.printBoard();
-        Move move = playerInterface.askAndGetMove();
-        System.out.println(move);
-        System.out.println("Valid move: " + ruleChecker.isValidMove(board, move));
+        while(true) {
+            Move move = playerInterface.askAndGetMove();
+            System.out.println(move);
+            boolean validMove = ruleChecker.isValidMove(board, move);
+            if(validMove) {
+                System.out.println("✔ Is valid move");
+                board.executeMove(move);
+                board.swapPlayer();
+                board.printBoard();
+            } else {
+                System.out.println("❌ Move is not valid");
+            }
+        }
     }
 }

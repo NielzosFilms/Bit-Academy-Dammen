@@ -19,7 +19,7 @@ public class Move {
     }
 
     private Point getPosition(Character character, int row) {
-        int y = Math.abs(row - Main.BOARD_HEIGHT);
+        int y = Math.abs(row - Main.BOARD_HEIGHT) - 1;
         int x = -1;
         for(int i = 0; i < Main.COLUMN_CHARS.length; i++) {
             Character colChar = Main.COLUMN_CHARS[i];
