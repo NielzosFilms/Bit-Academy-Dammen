@@ -5,21 +5,21 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PlayerInterface {
-    private static final String INPUT_PATTERN = "([abcdefgh])([12345678])-([abcdefgh])([12345678])";
+    private static final String INPUT_PATTERN = "([abcdefghij])([0123456789])-([abcdefghij])([0123456789])";
 
     private Scanner sc;
-    private boolean currentPlayerIsPlayer1 = true;
+    private Board board;
 
-    public PlayerInterface() {
-        this.currentPlayerIsPlayer1 = true;
+    public PlayerInterface(Board board) {
         this.sc = new Scanner(System.in);
+        this.board = board;
     }
 
     public Move askAndGetMove() {
         String input = "";
 
         while (!input.matches(INPUT_PATTERN)) {
-            System.out.println("⭐ Player " + getCurrentPlayer() + " (" + getPlayerColor() + ") define your move: (eg. \"a1-b2\")");
+            System.out.println("⭐ Player " + board.getCurrentPlayer() + " (" + board.getPlayerColor() + ") define your move: (eg. \"a1-b2\")");
             input = sc.next().toLowerCase();
             if (!input.matches(INPUT_PATTERN)) System.out.println("❌ This is not a valid input.");
         }
@@ -38,21 +38,5 @@ public class PlayerInterface {
                 matcher.group(3).toCharArray()[0],
                 Integer.parseInt(matcher.group(4))
         );
-    }
-
-    public void swapPlayer() {
-        currentPlayerIsPlayer1 = !currentPlayerIsPlayer1;
-    }
-
-    public Integer getCurrentPlayer() {
-        return currentPlayerIsPlayer1 ? 1 : 2;
-    }
-
-    public boolean currentPlayerIsPlayer1() {
-        return currentPlayerIsPlayer1;
-    }
-
-    public String getPlayerColor() {
-        return currentPlayerIsPlayer1 ? "White" : "Black";
     }
 }

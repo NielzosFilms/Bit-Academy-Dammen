@@ -10,16 +10,20 @@ public class Main {
 
     private static Board board;
     private static PlayerInterface playerInterface;
+    private static RuleChecker ruleChecker;
 
     private static void init() {
         board = new Board(BOARD_WIDTH, BOARD_HEIGHT);
-        playerInterface = new PlayerInterface();
+        playerInterface = new PlayerInterface(board);
+        ruleChecker = new RuleChecker();
     }
 
     public static void main(String[] args) {
         init();
 
         board.printBoard();
-        System.out.println(playerInterface.askAndGetMove());
+        Move move = playerInterface.askAndGetMove();
+        System.out.println(move);
+        System.out.println("Valid move: " + ruleChecker.isValidMove(board, move));
     }
 }

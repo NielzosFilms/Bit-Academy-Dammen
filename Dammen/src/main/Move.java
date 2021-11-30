@@ -31,6 +31,14 @@ public class Move {
         return new Point(x, y);
     }
 
+    public Point getFrom() {
+        return this.fromPos;
+    }
+
+    public Point getTo() {
+        return this.toPos;
+    }
+
     @Override
     public String toString() {
         return fromPos.toString() + " to " + toPos.toString();

@@ -11,6 +11,10 @@ public class Stone {
         this.color = color;
     }
 
+    public COLORS getColor() {
+        return this.color;
+    }
+
     @Override
     public String toString() {
         return this.color.toString() + icon;
