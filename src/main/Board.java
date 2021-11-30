@@ -148,15 +148,21 @@ public class Board {
     }
 
     public boolean canPlayerMove(int player, RuleChecker ruleChecker) {
+        int currentPlayer = this.currentPlayer;
+        this.currentPlayer = player;
         LinkedList<Stone> playerStones = this.getStonesFromPlayer(player);
         Point[] moveOffsets = player == 1 ? Main.PLAYER1_MOVE_OFFSETS : Main.PLAYER2_MOVE_OFFSETS;
         for(Stone stone : playerStones) {
             Point fromCell = this.getStonePosition(stone);
             for(Point offset : moveOffsets) {
                 Point moveToCell = new Point(fromCell.x + offset.x, fromCell.y + offset.y);
-                if(ruleChecker.isValidMove(this, new Move(fromCell, moveToCell), true)) return true;
+                if(ruleChecker.isValidMove(this, new Move(fromCell, moveToCell), true)) {
+                    this.currentPlayer = currentPlayer;
+                    return true;
+                }
             }
         }
+        this.currentPlayer = currentPlayer;
         return false;
     }
 }
